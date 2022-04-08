@@ -1,7 +1,7 @@
 (function() {
     console.log('main');
 
-    var audio = new Audio('/assets/balon.wav');
+    var audio = new Audio('assets/balon.wav');
     var balonSayisi = 25;
     SNR.Event('.balon', 'click', function() {
         console.log(this, 'balon patladı');
