@@ -1,20 +1,36 @@
 (function() {
-    console.log('main');
+    var balonSayisi = 24;
 
-    var audio = new Audio('assets/balon.wav');
-    var balonSayisi = 26;
-    SNR.Event('.balon', 'click', function() {
-        console.log(this, 'balon patladı');
-        audio.play();
-        this.classList.add("patladi");
-
-        var lstBa = SNR.Element('.patladi');
-        if (lstBa.length == balonSayisi) {
-            for (let i = 0; i < lstBa.length; i++) {
-                lstBa[i].classList.remove("patladi");
+    var resetBalon = function(){
+        var lstPatlayan = SNR.Element('.patladi');
+        if (lstPatlayan.length == balonSayisi) {
+            for (let i = 0; i < lstPatlayan.length; i++) {
+                lstPatlayan[i].classList.remove("patladi");
             }
         }
-    });
+    };
 
+    var checkBalon = function(event) {
+        var patlamaSesi = new Audio('assets/balon.wav');
+        
+        if (this.classList.contains('patladi')) {
+            return;
+        }
+
+        patlamaSesi.play();
+        this.classList.add("patladi");
+
+        resetBalon();
+    };
+
+    //SNR.Event('.balon', 'click', checkBalon);
+
+    SNR.Event('.balon', 'touchstart', checkBalon);
+
+    SNR.Event('body', 'touchmove', function(event){
+        if (event.scale !== 1) {
+            event.preventDefault();
+        }
+    });
 
 })();

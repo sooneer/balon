@@ -20,12 +20,12 @@ var SNR = {
         var tags = this.Element(selector);
         if (tags.length > 0) {
             for (var i = 0; i < tags.length; i++) {
-                tags[i].addEventListener(name, func);
+                tags[i].addEventListener(name, func, false);
             }
             return;
         }
 
-        return this.Element(selector).addEventListener(name, func);
+        return this.Element(selector).addEventListener(name, func, false);
 
     },
     Text: function(id, value) {

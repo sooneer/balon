@@ -18,10 +18,10 @@
         "sizes": "512x512"
       }
     ],
-    "start_url": "/?source=pwa",
+    "start_url": "/balon",
     "background_color": "#FFFFFF",
-    "display": "fullscreen",
-    "scope": "/",
+    "display": "standalone",
+    "scope": "/balon",
     "theme_color": "#FFFFFF",    
     "description": "APA Balloon Game"
   }
